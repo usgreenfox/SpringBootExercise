@@ -1,0 +1,33 @@
+version: "3"
+services:
+  db:
+    image: postgres:14
+    container_name: spring_boot_db # "SpringBoot用のDBを表す任意の名前"
+    restart: always
+    # コンテナ同士で繋ぐためコメントアウト
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: "password"
+      # DB, USER 記述しないとデフォルトで"postgres"となる
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: "postgres"
+    volumes:
+      # 基本構文[source:]target[:mode]
+      # "postgres_data"という名前のボリュームを/var/lib/postgresql/dataにマウントする
+      - postgres_data:/var/lib/postgresql/data
+
+  java:
+    image: openjdk:11.0-jre-slim
+    container_name: spring_boot
+    restart: always
+    ports:
+      - 8080:8080
+    tty: true
+    depends_on:
+      - db
+
+# "postgres_data"という名前のボリュームを定義
+# ボリュームがあれば使用し、なければ作成する
+volumes:
+  postgres_data:
