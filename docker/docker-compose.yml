@@ -1,4 +1,21 @@
 services:
+  java:
+    image: openjdk:15
+    container_name: java
+    env_file:
+      - ./mysql/db.env # mysqlと同じものを指定
+    tty: true
+    working_dir: /app #コンテナ内のワーキングディレクトリ
+    volumes:
+      - type: bind # source(ホストマシン)のディレクトリをtarget(コンテナ)にマウントする
+        source: ../spring_prj
+        target: /app
+    ports:
+      - 8080:8080 # 通常実行
+      - 5050:5050 # デバッグ用
+    depends_on:
+      - mysql # 「mysql」の後で起動
+
   mysql:
     # imageの指定ではなく、Dockerfileを用意している。
     # 理由：ビルドの過程で必要な情報を読み取ることが可能。
@@ -28,21 +45,6 @@ services:
       - 4200:80
     volumes:
       - ./dbclient/sessions:/sessions
-    depends_on:
-      - mysql # 「mysql」の後で起動
-
-  java:
-    image: openjdk:15
-    container_name: java
-    env_file:
-      - ./mysql/db.env # mysqlと同じものを指定
-    tty: true
-    working_dir: /app
-    volumes:
-      - ../spring_prj:/app
-    ports:
-      - 8080:8080 # 通常実行
-      - 5050:5050 # デバッグ用
     depends_on:
       - mysql # 「mysql」の後で起動
 

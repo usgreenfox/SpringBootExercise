@@ -30,3 +30,20 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+jar { // plan.jarは出力しない
+	enabled = false
+}
+
+bootJar { // archiveFileNameで一項目にまとめることもできる
+	archiveBaseName = "sample"
+	version = "0.0.1"
+	archiveClassifier = 'SNAPSHOT'
+	archiveExtension = 'jar'
+}
+
+bootRun { //debug用にgradleからJVMへ引数を渡す
+	systemProperties = System.properties // gradleのシステムプロパティをjavaに渡す
+	// 上記の記述で、以下の引数がjdkに渡される
+	jvmArgs=["-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5050"]
+}
