@@ -1,6 +1,6 @@
 services:
   java:
-    image: openjdk:15
+    image: openjdk:11
     container_name: java
     env_file:
       - ./mysql/db.env # mysqlと同じものを指定
