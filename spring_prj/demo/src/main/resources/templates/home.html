@@ -9,18 +9,29 @@
 
 <body>
   <header></header>
-  <main>
-    <div id="main-visual">
+  <main class="mx-3">
+    <article id="main-visual">
       <h1>Hello World!</h1>
-      
+
+    </article>
+    <div id="main-contents" class="row justify-content-between">
+      <article id="personal">
+        <h2>personal</h2>
+      </article>
+      <article id="career">
+        <h2>career</h2>
+      </article>
+      <article id="portfolio">
+        <h2>portfolio</h2>
+      </article>
+
     </div>
-    <section id="personal"></section>
-    <section id="career"></section>
-    <section id="portfolio"></section>
-    
+
   </main>
   <footer></footer>
-  <script src="webjars/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script th:src="@{webjars/jquery/3.3.1/jquery.min.js}"></script>
+  <script th:src="@{webjars/bootstrap/4.1.1/js/bootstrap.min.js}"></script>
+
 </body>
 
 </html>
