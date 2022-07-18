@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,17 @@ public class DemoService {
    * 
    */
   public void streamOptionalDemo() {
+
+    List<String> strList = Arrays.asList("aaa", "bbb", "ccc" );
+
+    String str1 = strList.stream().findFirst().get(); /* "aaa" */
+
+    // String str2 = strList.stream().filter(str -> "xxx".equals(str)).findFirst().get(); /* NoSuchElementException */
+
+    String str3 = strList.stream().filter(str -> "xxx".equals(str)).findFirst().orElse("yyy"); /* "yyy" */
+
+    System.out.println(str1);
+    System.out.println(str3);
 
   }
 
