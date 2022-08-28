@@ -53,6 +53,15 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
 		</dependency>
+		<!-- DBのテーブルから、MybatisのModel,Mapperを自動生成-->
+		<!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator -->
+		<dependency>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator</artifactId>
+				<version>1.4.1</version>
+				<type>pom</type>
+		</dependency>
+
 	</dependencies>
 
 	<build>
