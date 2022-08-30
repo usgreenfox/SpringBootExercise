@@ -55,13 +55,12 @@
 		</dependency>
 		<!-- DBのテーブルから、MybatisのModel,Mapperを自動生成-->
 		<!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator -->
-		<dependency>
+		<!-- <dependency>
 				<groupId>org.mybatis.generator</groupId>
 				<artifactId>mybatis-generator</artifactId>
 				<version>1.4.1</version>
 				<type>pom</type>
-		</dependency>
-
+		</dependency> -->
 	</dependencies>
 
 	<build>
@@ -78,6 +77,19 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<!-- MyBatis ORマッパー、エンティティの自動生成 -->
+			<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>1.4.1</version>
+			</plugin>
+			<dependencies>
+				<dependency>
+					<groupId>mysql</groupId>
+					<artifactId>mysql-connector-java</artifactId>
+				</dependency>
+			</dependencies>
 		</plugins>
 	</build>
 
