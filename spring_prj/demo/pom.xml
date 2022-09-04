@@ -32,6 +32,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.30</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -83,13 +84,15 @@
 				<groupId>org.mybatis.generator</groupId>
 				<artifactId>mybatis-generator-maven-plugin</artifactId>
 				<version>1.4.1</version>
-			</plugin>
 			<dependencies>
+				<!-- DBコネクター -->
 				<dependency>
 					<groupId>mysql</groupId>
 					<artifactId>mysql-connector-java</artifactId>
+					<version>8.0.30</version>
 				</dependency>
 			</dependencies>
+			</plugin>
 		</plugins>
 	</build>
 
